@@ -1,9 +1,11 @@
 ---
 interface Props {
   lang?: 'de' | 'en';
+  dePathOverride?: string;
+  enPathOverride?: string;
 }
 
-const { lang = 'de' } = Astro.props;
+const { lang = 'de', dePathOverride, enPathOverride } = Astro.props;
 
 const nav = {
   de: {
@@ -27,7 +29,11 @@ const currentPath = Astro.url.pathname;
 let dePath: string;
 let enPath: string;
 
-if (currentPath.startsWith('/en')) {
+if (dePathOverride || enPathOverride) {
+  // Explicit overrides (e.g. preview pages that live outside the /de|/en tree)
+  dePath = dePathOverride ?? '/de';
+  enPath = enPathOverride ?? '/en';
+} else if (currentPath.startsWith('/en')) {
   // Currently on English page - swap /en to /de
   dePath = currentPath.replace(/^\/en/, '/de');
   enPath = currentPath;

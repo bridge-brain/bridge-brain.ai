@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import Products from '../../components/Products.astro';
+import UseCases from '../../components/UseCases.astro';
+import Target from '../../components/Target.astro';
+import Team from '../../components/Team.astro';
+import Contact from '../../components/Contact.astro';
+import '../../styles/global.css';
+
+const lang = 'de';
+const dePath = '/archiv-3e0dd1e75969e553/';
+const enPath = '/archiv-3e0dd1e75969e553/en/';
+---
+
+<Layout
+  title="Archiv · bridgebrAIn – KI-gestützte Strategieberatung"
+  description="Archivierte Vorgänger-Version der bridgebrAIn-Website."
+  lang={lang}
+  noindex={true}
+>
+  <Header lang={lang} dePathOverride={dePath} enPathOverride={enPath} />
+
+  <main>
+    <Hero lang={lang} />
+    <Products lang={lang} />
+    <UseCases lang={lang} />
+    <Target lang={lang} />
+    <Team lang={lang} />
+    <Contact lang={lang} />
+  </main>
+
+  <Footer lang={lang} />
+
+  <!-- Archiv-Hinweis (nur auf dieser nicht-öffentlichen URL) -->
+  <div class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 px-4 py-2 bg-slate-700/90 backdrop-blur text-white text-xs font-medium rounded-full shadow-lg pointer-events-none">
+    Archiv · frühere Version · nicht öffentlich
+  </div>
+</Layout>

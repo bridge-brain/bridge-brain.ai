@@ -1,0 +1,61 @@
+---
+interface Props {
+  lang?: 'de' | 'en';
+}
+
+const { lang = 'de' } = Astro.props;
+
+const content = {
+  de: {
+    sectionTag: 'Für wen',
+    headline: 'Gemacht für den Mittelstand',
+    description: 'Wir arbeiten mit inhaber- und familiengeführten Unternehmen – flache Hierarchien, kurze Entscheidungswege, ein Vertrauensgeschäft. Vom kleineren Betrieb bis zum etablierten Mittelständler: überall dort, wo strategische Kapazität fehlt und der Handlungsdruck bei KI real ist.',
+    criteria: [
+      'KI gezielt vom Arbeitsplatz bis ins Management einsetzen – mit echter Umsetzung statt Pilot-Friedhof.',
+      'Vertrauliche Daten schützen und Schatten-KI in geordnete Bahnen lenken.',
+      'Fehlende strategische Funktionen durch virtuelle Kollegen ergänzen.',
+    ],
+  },
+  en: {
+    sectionTag: 'Who it\'s for',
+    headline: 'Built for the Mittelstand',
+    description: 'We work with owner- and family-run companies – flat hierarchies, short decision paths, a business built on trust. From the smaller firm to the established mid-sized company: wherever strategic capacity is missing and the pressure to act on AI is real.',
+    criteria: [
+      'Deploy AI from the workplace to management – with real implementation, not a pilot graveyard.',
+      'Protect confidential data and bring shadow AI into orderly channels.',
+      'Fill missing strategic functions with virtual colleagues.',
+    ],
+  },
+};
+
+const t = content[lang];
+---
+
+<section id="zielgruppe" class="py-24 lg:py-32 bg-slate-50/50">
+  <div class="container-narrow">
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 bg-brand-blue/10 text-brand-blue-dark text-sm font-medium rounded-full mb-6 animate-on-scroll">
+        {t.sectionTag}
+      </span>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 animate-on-scroll">
+        {t.headline}
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto animate-on-scroll">
+        {t.description}
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-3 gap-6 animate-on-scroll">
+      {t.criteria.map((item, index) => (
+        <div class="card text-center" style={`animation-delay: ${(index + 1) * 100}ms`}>
+          <div class="w-12 h-12 bg-brand-blue/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <p class="text-slate-700 leading-relaxed">{item}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

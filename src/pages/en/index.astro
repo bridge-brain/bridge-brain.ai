@@ -2,27 +2,33 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import Hero from '../../components/Hero.astro';
-import Products from '../../components/Products.astro';
-import UseCases from '../../components/UseCases.astro';
-import Target from '../../components/Target.astro';
+import HeroV2 from '../../components/v2/HeroV2.astro';
+import Problem from '../../components/v2/Problem.astro';
+import Evidence from '../../components/v2/Evidence.astro';
+import Pillars from '../../components/v2/Pillars.astro';
+import Process from '../../components/v2/Process.astro';
+import Colleagues from '../../components/v2/Colleagues.astro';
+import TargetV2 from '../../components/v2/TargetV2.astro';
 import Team from '../../components/Team.astro';
 import Contact from '../../components/Contact.astro';
 import '../../styles/global.css';
 ---
 
 <Layout
-  title="bridgebrAIn – AI-powered Strategy Consulting for SMEs"
-  description="Professional strategy consulting, enabled by artificial intelligence. For small and medium-sized businesses that want to grow strategically."
+  title="bridgebrAIn – We implement AI in the Mittelstand"
+  description="bridgebrAIn implements AI in the German Mittelstand: from the first quick win to your virtual colleague – secure, hosted in Germany, all from a single partner."
   lang="en"
 >
   <Header lang="en" />
 
   <main>
-    <Hero lang="en" />
-    <Products lang="en" />
-    <UseCases lang="en" />
-    <Target lang="en" />
+    <HeroV2 lang="en" />
+    <Problem lang="en" />
+    <Evidence lang="en" />
+    <Pillars lang="en" />
+    <Process lang="en" />
+    <Colleagues lang="en" />
+    <TargetV2 lang="en" />
     <Team lang="en" />
     <Contact lang="en" />
   </main>

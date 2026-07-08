@@ -1,0 +1,121 @@
+---
+interface Props {
+  lang?: 'de' | 'en';
+}
+
+const { lang = 'de' } = Astro.props;
+
+const content = {
+  de: {
+    sectionTag: 'Die Lösung',
+    headline: 'Zwei Säulen, die den Mittelstand AI-ready machen',
+    intro: 'Der Mittelstand scheitert nicht an der Technik, sondern an der Umsetzung. Wir schließen diese Lücke mit zwei Säulen – die eine bringt KI in den Betrieb, die andere verankert sie dauerhaft. Beide verstärken sich gegenseitig.',
+    pillars: [
+      {
+        label: 'Säule 1',
+        title: 'KI-Implementierer',
+        claim: 'Wir setzen KI im Betrieb wirklich um – als Umsetzungspartner, alles aus einer Hand.',
+        points: [
+          'Standortbestimmung – ein strukturierter Workshop, der die wertvollsten Use-Cases und einen konkreten Plan liefert.',
+          'Quick Wins – Standardprozesse automatisieren (z. B. Reisekosten, Rechnungsprüfung) mit passenden Tools.',
+          'Tiefere Implementierung vor Ort – spezifische Prozesse, Integration, Begleitung bis zur lauffähigen Lösung.',
+          'Schulung & Förderung – Qualifizierung der Mitarbeitenden und Unterstützung bei passenden Fördermitteln.',
+        ],
+      },
+      {
+        label: 'Säule 2',
+        title: 'Produkt & Plattform',
+        claim: 'Wir verankern KI dauerhaft im Unternehmen.',
+        points: [
+          'Sichere Plattform mit KI-Zugang für alle – in Deutschland gehostet, mit Pseudonymisierung, ohne Datenabfluss.',
+          'Bridget als Basis-Assistenz – die Kollegin für die Geschäftsleitung, die den Unternehmenskontext kennt.',
+          'Modulare Spezial-Rollen – für Strategie, Prozesse, Finanzen und mehr; das Zusammenspiel wächst mit jeder Rolle.',
+          'Wächst mit Ihnen – weitere Rollen und Nutzer kommen dazu, wenn der Bedarf da ist.',
+        ],
+      },
+    ],
+    loop: 'Beide Säulen greifen ineinander: Die Umsetzung bringt schnelle Ergebnisse, die Plattform hält KI dauerhaft im Unternehmen lebendig – und deckt im Betrieb laufend neue Chancen auf.',
+  },
+  en: {
+    sectionTag: 'The solution',
+    headline: 'Two pillars that make the Mittelstand AI-ready',
+    intro: 'SMEs don\'t fail on technology, but on implementation. We close that gap with two pillars – one gets AI into operation, the other anchors it for good. Both reinforce each other.',
+    pillars: [
+      {
+        label: 'Pillar 1',
+        title: 'AI implementer',
+        claim: 'We truly put AI into operation – as your implementation partner, all from a single source.',
+        points: [
+          'Assessment – a structured workshop that delivers the most valuable use cases and a concrete plan.',
+          'Quick wins – automate standard processes (e.g. travel expenses, invoice checks) with the right tools.',
+          'Deeper on-site implementation – specific processes, integration, guidance to a working solution.',
+          'Training & funding – upskilling your people and support with suitable funding programs.',
+        ],
+      },
+      {
+        label: 'Pillar 2',
+        title: 'Product & platform',
+        claim: 'We anchor AI permanently in the company.',
+        points: [
+          'Secure platform with AI access for everyone – hosted in Germany, with pseudonymization, no data leakage.',
+          'Bridget as your base assistant – the colleague for management that knows your company context.',
+          'Modular specialist roles – for strategy, processes, finance and more; the interplay grows with every role.',
+          'Grows with you – add roles and users as the need arises.',
+        ],
+      },
+    ],
+    loop: 'The two pillars work hand in hand: implementation delivers fast results, the platform keeps AI alive in the company for good – and continuously surfaces new opportunities in operation.',
+  },
+};
+
+const t = content[lang];
+---
+
+<section id="loesung" class="py-24 lg:py-32 bg-brand-navy text-white">
+  <div class="container-wide">
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <span class="inline-block px-4 py-2 bg-white/10 text-white text-sm font-medium rounded-full mb-6 animate-on-scroll">
+        {t.sectionTag}
+      </span>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 animate-on-scroll">
+        {t.headline}
+      </h2>
+      <p class="text-white/70 leading-relaxed animate-on-scroll">
+        {t.intro}
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+      {t.pillars.map((pillar, index) => (
+        <div
+          class="flex flex-col p-8 bg-white/5 border border-white/10 rounded-3xl animate-on-scroll"
+          style={`animation-delay: ${(index + 1) * 100}ms`}
+        >
+          <span class="text-sm font-semibold text-brand-blue-light uppercase tracking-wider mb-2">{pillar.label}</span>
+          <h3 class="text-2xl font-bold mb-3">{pillar.title}</h3>
+          <p class="text-white/80 leading-relaxed mb-6">{pillar.claim}</p>
+          <ul class="space-y-3 mt-auto">
+            {pillar.points.map((point) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 mt-0.5 flex-shrink-0 text-brand-blue-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-white/80 leading-relaxed">{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Reinforcing loop -->
+    <div class="max-w-4xl mx-auto mt-10 animate-on-scroll">
+      <div class="flex items-start gap-4 p-6 bg-brand-blue/10 border border-brand-blue/20 rounded-2xl">
+        <svg class="w-6 h-6 flex-shrink-0 text-brand-blue-light mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        </svg>
+        <p class="text-white/80 leading-relaxed">{t.loop}</p>
+      </div>
+    </div>
+  </div>
+</section>

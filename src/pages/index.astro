@@ -1,4 +1,8 @@
 ---
-// Redirect to German version by default
-return Astro.redirect('/de');
 ---
+<html>
+  <head>
+    <script>window.location.replace('/de');</script>
+    <noscript><meta http-equiv="refresh" content="0;url=/de" /></noscript>
+  </head>
+</html>

@@ -1,0 +1,60 @@
+---
+interface Props {
+  lang?: 'de' | 'en';
+}
+
+const { lang = 'de' } = Astro.props;
+
+const content = {
+  de: {
+    sectionTag: 'So läuft es ab',
+    headline: 'Von der Standortbestimmung zur dauerhaften Verankerung',
+    intro: 'Ein klarer, wiederholbarer Ablauf – kein Strategie-Papier, sondern KI, die am Ende wirklich läuft.',
+    steps: [
+      { n: '01', title: 'Standortbestimmung', text: 'In einem strukturierten Workshop nehmen wir Ziele und Prozesse auf und identifizieren gemeinsam die wertvollsten Use-Cases.' },
+      { n: '02', title: 'Priorisierung', text: 'Pain Points und Use-Cases werden priorisiert, die ersten Quick Wins ausgewählt – mit klarer Aufwandsschätzung und Angebot.' },
+      { n: '03', title: 'Umsetzung', text: 'Quick Wins über passende Tools oder tiefere Implementierung vor Ort – parallel Daten, Governance und Schulung.' },
+      { n: '04', title: 'Verankerung', text: 'Sichere Plattform und virtuelle Kollegen verankern KI dauerhaft – und erkennen im Betrieb laufend neue Use-Cases.' },
+    ],
+  },
+  en: {
+    sectionTag: 'How it works',
+    headline: 'From assessment to lasting anchoring',
+    intro: 'A clear, repeatable process – not a strategy paper, but AI that actually runs in the end.',
+    steps: [
+      { n: '01', title: 'Assessment', text: 'In a structured workshop we capture goals and processes and jointly identify the most valuable use cases.' },
+      { n: '02', title: 'Prioritization', text: 'Pain points and use cases are prioritized, the first quick wins selected – with a clear effort estimate and offer.' },
+      { n: '03', title: 'Implementation', text: 'Quick wins via ready-made tools or deeper on-site implementation – in parallel: data, governance and training.' },
+      { n: '04', title: 'Anchoring', text: 'A secure platform and virtual colleagues anchor AI for good – and continuously spot new use cases in operation.' },
+    ],
+  },
+};
+
+const t = content[lang];
+---
+
+<section id="ablauf" class="py-24 lg:py-32 bg-slate-50/50">
+  <div class="container-wide">
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <span class="inline-block px-4 py-2 bg-brand-blue/10 text-brand-blue-dark text-sm font-medium rounded-full mb-6 animate-on-scroll">
+        {t.sectionTag}
+      </span>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 animate-on-scroll">
+        {t.headline}
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed animate-on-scroll">
+        {t.intro}
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {t.steps.map((step, index) => (
+        <div class="card relative animate-on-scroll" style={`animation-delay: ${(index + 1) * 100}ms`}>
+          <span class="text-4xl font-bold text-brand-blue/20 mb-4 block">{step.n}</span>
+          <h3 class="text-lg font-semibold text-brand-navy mb-2">{step.title}</h3>
+          <p class="text-slate-600 leading-relaxed text-sm">{step.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

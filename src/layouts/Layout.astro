@@ -3,13 +3,17 @@ interface Props {
   title: string;
   description?: string;
   lang?: 'de' | 'en';
+  noindex?: boolean;
 }
 
-const { 
-  title, 
-  description = 'bridgebrAIn - KI-gestützte Strategieberatung für den Mittelstand',
-  lang = 'de' 
+const {
+  title,
+  description = 'bridgebrAIn - KI für strategische Entscheidungen im Mittelstand',
+  lang = 'de',
+  noindex = false
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, 'https://bridge-brain.ai');
 ---
 
 <!DOCTYPE html>
@@ -19,22 +23,23 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0a1628" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/icon.png" />
     
     <!-- Open Graph -->
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta name="title" property="og:title" content="bridgebrAIn - KI für strategische Entscheidungen im Mittelstand" />
+    <meta name="description" property="og:description" content="bridgebrAIn entwickelt KI-basierte Managementwerkzeuge und unterstützt mittelständische Unternehmen dabei, konkrete KI-Anwendungen für ihre Organisation zu identifizieren und umzusetzen." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://bridge-brain.ai" />
-    <meta property="og:image" content="https://bridge-brain.ai/logo.png" />
+    <meta name="url" property="og:url" content={canonicalURL.href} />
+    <meta name="image" property="og:image" content="https://bridge-brain.ai/og-light.png" />
     
     <title>{title}</title>
   </head>
   <body class="min-h-screen flex flex-col">
-    <!-- Password Gate -->
+    <!-- PASSWORD GATE (deaktiviert – bei Bedarf wieder einkommentieren)
     <div id="password-gate" class="fixed inset-0 z-50 bg-white flex items-center justify-center">
       <div class="text-center p-8 max-w-sm">
         <img src="/icon.svg" alt="bridgebrAIn" class="w-16 h-auto mx-auto mb-6" />
@@ -66,7 +71,7 @@ const {
       const HASH = 'b142359db3514cc5429e3aafec369af5a2b558f3879af0156db1ec1a7112f84f';
       const STORAGE_KEY = 'bb-preview-access';
 
-      async function sha256(message: string): Promise<string> {
+      async function sha256(message) {
         const msgBuffer = new TextEncoder().encode(message);
         const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
         const hashArray = Array.from(new Uint8Array(hashBuffer));
@@ -79,19 +84,15 @@ const {
         sessionStorage.setItem(STORAGE_KEY, 'true');
       }
 
-      // Check if already unlocked
       if (sessionStorage.getItem(STORAGE_KEY) === 'true') {
         unlockSite();
       }
 
-      // Handle form submission
       document.getElementById('password-form')?.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const input = document.getElementById('password-input') as HTMLInputElement;
+        const input = document.getElementById('password-input');
         const error = document.getElementById('password-error');
-
         const hash = await sha256(input.value);
-
         if (hash === HASH) {
           unlockSite();
         } else {
@@ -101,6 +102,9 @@ const {
         }
       });
     </script>
+    -->
+
+    <slot />
 
     <script>
       // Scroll animation observer

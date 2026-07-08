@@ -2,27 +2,33 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import Hero from '../../components/Hero.astro';
-import Products from '../../components/Products.astro';
-import UseCases from '../../components/UseCases.astro';
-import Target from '../../components/Target.astro';
+import HeroV2 from '../../components/v2/HeroV2.astro';
+import Problem from '../../components/v2/Problem.astro';
+import Evidence from '../../components/v2/Evidence.astro';
+import Pillars from '../../components/v2/Pillars.astro';
+import Process from '../../components/v2/Process.astro';
+import Colleagues from '../../components/v2/Colleagues.astro';
+import TargetV2 from '../../components/v2/TargetV2.astro';
 import Team from '../../components/Team.astro';
 import Contact from '../../components/Contact.astro';
 import '../../styles/global.css';
 ---
 
 <Layout
-  title="bridgebrAIn – KI-gestützte Strategieberatung für den Mittelstand"
-  description="Professionelle Strategieberatung, ermöglicht durch künstliche Intelligenz. Für kleine und mittlere Unternehmen, die strategisch wachsen wollen."
+  title="bridgebrAIn – Wir implementieren KI im Mittelstand"
+  description="bridgebrAIn implementiert KI im Mittelstand: vom ersten Quick Win bis zum virtuellen Kollegen – sicher, in Deutschland gehostet, alles aus einer Hand."
   lang="de"
 >
   <Header lang="de" />
 
   <main>
-    <Hero lang="de" />
-    <Products lang="de" />
-    <UseCases lang="de" />
-    <Target lang="de" />
+    <HeroV2 lang="de" />
+    <Problem lang="de" />
+    <Evidence lang="de" />
+    <Pillars lang="de" />
+    <Process lang="de" />
+    <Colleagues lang="de" />
+    <TargetV2 lang="de" />
     <Team lang="de" />
     <Contact lang="de" />
   </main>
